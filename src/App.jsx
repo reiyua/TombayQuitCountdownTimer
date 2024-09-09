@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './Countdown.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const RetirementCountdown = () => {
+  const [timeLeft, setTimeLeft] = useState({});
+  const [prevTimeLeft, setPrevTimeLeft] = useState({});
+
+  const calculateTimeLeft = () => {
+    const retirementDate = new Date('2025-09-02'); // Replace with your retirement date
+    const now = new Date();
+    const difference = retirementDate - now;
+
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const newTimeLeft = calculateTimeLeft();
+      setPrevTimeLeft(timeLeft); // Store the previous time
+      setTimeLeft(newTimeLeft);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="countdown-container">
+      <h1 className="countdown-title">Tombay retires in:</h1>
+      {Object.keys(timeLeft).length > 0 ? (
+        <div className="countdown">
+          <FlipUnit number={timeLeft.days} prevNumber={prevTimeLeft.days} label="Days" />
+          <FlipUnit number={timeLeft.hours} prevNumber={prevTimeLeft.hours} label="Hours" />
+          <FlipUnit number={timeLeft.minutes} prevNumber={prevTimeLeft.minutes} label="Minutes" />
+          <FlipUnit number={timeLeft.seconds} prevNumber={prevTimeLeft.seconds} label="Seconds" />
+        </div>
+      ) : (
+        <p>Congratulations! You're retired!</p>
+      )}
+    </div>
+  );
+};
 
-export default App
+// FlipUnit component handles the animation for each unit
+const FlipUnit = ({ number, prevNumber, label }) => {
+  return (
+    <div className="countdown-section">
+      <div className={`flip-card ${number !== prevNumber ? 'animate' : ''}`}>
+        <span className="countdown-number">{number}</span>
+      </div>
+      <span className="countdown-label">{label}</span>
+    </div>
+  );
+};
+
+export default RetirementCountdown;

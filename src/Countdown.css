@@ -1,0 +1,79 @@
+/* Countdown Container */
+.countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background-color: #282c34;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  /* Countdown Title */
+  .countdown-title {
+    font-size: 4em; /* Make the title larger */
+    margin-bottom: 40px; /* Add more space below the title */
+    color: #ffffff;
+  }
+  
+  /* Countdown */
+  .countdown {
+    display: flex;
+    gap: 40px; /* Increase space between countdown sections */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+    width: 100%;
+    max-width: 1200px; /* Maximum width to avoid overcrowding */
+  }
+  
+  /* Countdown Section (Days, Hours, Minutes, Seconds) */
+  .countdown-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Flip Animation */
+  .flip-card {
+    perspective: 1000px;
+  }
+  
+  .flip-card.animate .countdown-number {
+    animation: flip 0.6s ease-in-out;
+  }
+  
+  @keyframes flip {
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(-90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+  
+  /* Countdown Number (Big Digital Style Numbers) */
+  .countdown-number {
+    font-size: 8em; /* Larger numbers */
+    background-color: #ffffff;
+    color: #000000;
+    padding: 30px; /* More padding around the numbers */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  
+  /* Countdown Label (Small Text under Numbers) */
+  .countdown-label {
+    font-size: 2em; /* Larger labels */
+    margin-top: 20px;
+  }
+  
