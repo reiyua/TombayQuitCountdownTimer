@@ -6,7 +6,7 @@
     justify-content: center;
     min-height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
-    background-color: #282c34;
+    background: radial-gradient(circle at center, #ff9866, #ff5f62);
     color: white;
     font-family: 'Roboto', sans-serif;
     text-align: center;
