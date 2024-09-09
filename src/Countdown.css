@@ -76,4 +76,23 @@
     font-size: 2em; /* Larger labels */
     margin-top: 20px;
   }
+
+  /* Footer copyright */
+.footer-copyright {
+    position: absolute;
+    bottom: 20px; /* Position it a bit above the edge */
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    color: #ffffff;
+  }
+  
+  .footer-copyright a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .footer-copyright a:hover {
+    text-decoration: underline;
+  }
   
