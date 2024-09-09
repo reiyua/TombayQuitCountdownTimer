@@ -45,7 +45,7 @@ const RetirementCountdown = () => {
           <FlipUnit number={timeLeft.seconds} prevNumber={prevTimeLeft.seconds} label="Seconds" />
         </div>
       ) : (
-        <p>Congratulations! You're retired!</p>
+        <h1>Congratulations! You're retired!</h1>
       )}
     </div>
   );
