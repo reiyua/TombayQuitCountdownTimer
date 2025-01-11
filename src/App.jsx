@@ -36,7 +36,7 @@ const RetirementCountdown = () => {
 
   return (
     <div className="countdown-container">
-      <h1 className="countdown-title">Tombay retires in:</h1>
+      <h1 className="countdown-title">Tombay quits in:</h1>
       {Object.keys(timeLeft).length > 0 ? (
         <div className="countdown">
           <FlipUnit number={timeLeft.days} prevNumber={prevTimeLeft.days} label="Days" />
@@ -45,7 +45,7 @@ const RetirementCountdown = () => {
           <FlipUnit number={timeLeft.seconds} prevNumber={prevTimeLeft.seconds} label="Seconds" />
         </div>
       ) : (
-        <h1>Congratulations! You're retired!</h1>
+        <h1>So long, and thanks for the fish!!! 🐟🐟🐟</h1>
       )}
     </div>
   );
