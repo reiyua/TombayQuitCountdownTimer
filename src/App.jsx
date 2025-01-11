@@ -6,7 +6,7 @@ const RetirementCountdown = () => {
   const [prevTimeLeft, setPrevTimeLeft] = useState({});
 
   const calculateTimeLeft = () => {
-    const retirementDate = new Date('2025-09-02'); // Replace with your retirement date
+    const retirementDate = new Date('2025-02-14'); // Replace with your retirement date
     const now = new Date();
     const difference = retirementDate - now;
 
